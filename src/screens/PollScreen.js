@@ -1,71 +1,33 @@
 import React, { useState } from 'react';
 import {
   SafeAreaView,
-  TextInput,
   StyleSheet,
-  FlatList,
   View,
   Text,
   StatusBar,
-  Button,
-  Alert, KeyboardAvoidingView,
+  KeyboardAvoidingView,
 } from 'react-native';
+import InputTitle from '../components/InputTitle';
+import ContentView from '../components/ContentView';
 
-
-
-const App = () => {
+const PollScreen = () => {
   const [value, onChangeText] = useState('Title Poll');
-  const [components, setComponents] = useState([{ index: '0', title: 'Components #0'}]);
+
+  onTitleChange = (value) => {
+    onChangeText(value);
+  };
 
   return (
     <>
       <StatusBar barStyle="default" />
-      <SafeAreaView style={styles.viewContaner}>
+      <SafeAreaView style={styles.viewContainer}>
         <KeyboardAvoidingView
-          style={styles.viewContaner}
+          style={styles.viewContainer}
           behavior="padding"
+          keyboardVerticalOffset={100}
         >
-          <TextInput
-            style={styles.textInput}
-            onChangeText={text => onChangeText(text)}
-            value={value}
-          />
-          <FlatList
-            keyExtractor={item => item.index}
-            data={components}
-            renderItem={({ item }) => {
-              return (
-                <View style={styles.viewItem}>
-                  <Text style={styles.textItem}>index #{item.index}</Text>
-                  <TextInput
-                    style={styles.textInput}
-                    onChangeText={text => {
-                      setComponents([...components].map(object => {
-                        if (object.index === item.index) {
-                          return {
-                            ...object,
-                            title: text
-                          }
-                        } else {
-                          return object
-                        }
-                      }));
-                    }}
-                    value={item.title}
-                  />
-                </View>
-              );
-            }}
-          />
-          <Button
-            title={'Add something'}
-            style={styles.buttonAdd}
-            onPress={ () => {
-              setComponents([...components, {
-                index: `${components.length}`, title: `Components #${components.length}`
-              }]);
-            }}
-          />
+          <InputTitle value={value} onChange={(text) => this.onTitleChange(text)}/>
+          <ContentView />
         </KeyboardAvoidingView>
       </SafeAreaView>
     </>
@@ -96,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default PollScreen;
