@@ -5,7 +5,7 @@ import InputTitle from './InputTitle';
 const ContentView = () => {
   const [components, setComponents] = useState([{ index: '0', title: 'Components #0'}]);
 
-  onTextChange = (value) => {
+  onTextChange = (item, value) => {
     setComponents([...components].map(object => {
       if (object.index === item.index) {
         return {
@@ -18,6 +18,12 @@ const ContentView = () => {
     }));
   };
 
+  onButtonPress = () => {
+    setComponents([...components, {
+      index: `${components.length}`, title: `Components #${components.length}`
+    }]);
+  };
+
   return (
     <View style={styles.viewContainer}>
       <FlatList
@@ -28,7 +34,7 @@ const ContentView = () => {
           return (
             <View style={styles.viewItem}>
             <Text style={styles.textItem}>index #{item.index}</Text>
-              <InputTitle value={item.title} onChange={(text) => this.onTextChange(text)}/>
+              <InputTitle value={item.title} onChange={(text) => this.onTextChange(item, text)}/>
             </View>
           );
         }}
@@ -36,11 +42,7 @@ const ContentView = () => {
       <Button
         title={'Add something'}
         style={styles.buttonAdd}
-        onPress={ () => {
-          setComponents([...components, {
-            index: `${components.length}`, title: `Components #${components.length}`
-          }]);
-        }}
+        onPress={ () => this.onButtonPress() }
       />
     </View>
   )
