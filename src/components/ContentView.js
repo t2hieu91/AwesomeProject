@@ -24,6 +24,12 @@ const ContentView = () => {
 		}]);
 	};
 
+	onRemoveChange = (item) => {
+		setComponents([...components].filter(object => {
+			return object.index !== item.index
+		}));
+	};
+
 	return (
 		<View style={styles.viewContainer}>
 			<FlatList
@@ -40,12 +46,13 @@ const ContentView = () => {
 								clearButtonMode={'while-editing'}
 								placeholder={`Option #${item.index}`}
 							/>
-							<Icon
-								raised
-								name='heartbeat'
-								type='font-awesome'
-								color='#f50'
-								onPress={() => console.log('hello')} />
+							<TouchableOpacity
+								style={styles.iconView}
+								onPress={() => this.onRemoveChange(item)}
+							>
+								<Icon color='gray' name='close' type='AntDesign' />
+							</TouchableOpacity>
+
 						</View>
 					);
 				}}
@@ -64,9 +71,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	listView: {
-		borderWidth: 1,
-		borderColor: 'blue',
-		marginTop: 15,
+		// marginTop: 15,
 	},
 	viewItem: {
 		justifyContent: 'center',
@@ -76,18 +81,23 @@ const styles = StyleSheet.create({
 	textItem: {
 		fontSize: 20,
 	},
+
 	itemView: {
-		borderBottomColor: 'red',
+		borderBottomColor: 'gray',
 		borderBottomWidth: 1,
 		marginHorizontal: 15,
 		height: 45,
-		justifyContent: 'center',
 		flexDirection: 'row',
 	},
 	inputItem: {
 		fontSize: 16,
+		alignContent: 'center',
+		flex: 1
 	},
-
+	iconView: {
+		width: 35,
+		justifyContent: 'center'
+	}
 });
 
 export default ContentView;

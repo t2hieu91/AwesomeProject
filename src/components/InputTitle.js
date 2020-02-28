@@ -9,6 +9,7 @@ const InputTitle = ({value, onChange}) => {
         onChangeText={text => onChange(text)}
         value={value}
         clearButtonMode={'while-editing'}
+        placeholder={'Your question ?'}
       />
     </View>
   )
@@ -16,11 +17,13 @@ const InputTitle = ({value, onChange}) => {
 
 const styles = StyleSheet.create({
   viewContainer: {
-    borderColor: 'gray',
-    borderWidth: 1,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1,
   },
   textInput: {
+    marginHorizontal: 15,
     height: 60,
+    fontSize: 20,
   },
 });
 

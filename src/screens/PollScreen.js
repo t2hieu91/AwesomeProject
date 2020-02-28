@@ -11,7 +11,7 @@ import InputTitle from '../components/InputTitle';
 import ContentView from '../components/ContentView';
 
 const PollScreen = () => {
-  const [value, onChangeText] = useState('Title Poll');
+  const [value, onChangeText] = useState('');
 
   onTitleChange = (value) => {
     onChangeText(value);
