@@ -1,15 +1,19 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import HomeScreen from "./src/screens/HomeScreen";
 import PollScreen from './src/screens/PollScreen';
+import FetchApiScreen from "./src/screens/FetchApiScreen";
 
 const navigator = createStackNavigator(
   {
-    Poll: PollScreen
+    Home: HomeScreen,
+    Poll: PollScreen,
+    Api: FetchApiScreen
   },
   {
-    initialRouteName: 'Poll',
+    initialRouteName: 'Home',
     defaultNavigationOptions: {
-      title: 'Poll Demo'
+      title: 'Demo Project'
     }
   }
 );
