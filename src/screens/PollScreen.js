@@ -37,6 +37,7 @@ const PollScreen = () => {
 const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
+    backgroundColor: 'white',
   },
   viewItem: {
     height: 100,
