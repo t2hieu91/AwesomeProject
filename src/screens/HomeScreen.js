@@ -1,11 +1,13 @@
 import React from "react";
-import { SafeAreaView, Button, Text, StyleSheet } from "react-native";
+import { SafeAreaView, Button, Text, StyleSheet, Alert } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
+
 	return (
 		<SafeAreaView style={styles.containerView}>
 			<Button title={"Poll demo"} onPress={() => navigation.navigate('Poll')}/>
-			<Button title={"Fetch Api Demo"} onPress={() => navigation.navigate('Api')}/>
+			<Button title={"Fetch Api Demo"} onPress={() => navigation.navigate('FetchApi')}/>
+			<Button title={"Tabbar"} onPress={() => navigation.navigate('Tab')}/>
 		</SafeAreaView>
 	)
 };

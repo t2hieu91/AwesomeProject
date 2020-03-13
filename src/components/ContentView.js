@@ -50,7 +50,7 @@ const ContentView = () => {
 								style={styles.iconView}
 								onPress={() => this.onRemoveChange(item)}
 							>
-								<Icon color='gray' name='close' type='AntDesign' />
+								{/*<Icon color='gray' name='close' type='AntDesign' />*/}
 							</TouchableOpacity>
 
 						</View>
